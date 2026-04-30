@@ -1,27 +1,33 @@
 package com.example.demo.security;
 
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
+import java.security.Key;
 import java.util.Date;
 
 @Service
 public class JwtService {
 
-    private final String SECRET = "cutflow_secret_key";
+    private final Key key =
+            Keys.hmacShaKeyFor("cutflow_secret_key_cutflow_secret_key".getBytes());
+
+    private final long EXPIRATION = 86400000;
 
     public String generarToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
-                .signWith(SignatureAlgorithm.HS256, SECRET)
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public String extraerUsuario(String token) {
-        return Jwts.parser()
-                .setSigningKey(SECRET)
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
@@ -29,19 +35,13 @@ public class JwtService {
 
     public boolean validarToken(String token) {
         try {
-            Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+            Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token);
             return true;
-        } catch (ExpiredJwtException e) {
-            System.out.println("Token expirado");
-        } catch (UnsupportedJwtException e) {
-            System.out.println("Token no soportado");
-        } catch (MalformedJwtException e) {
-            System.out.println("Token mal formado");
-        } catch (SignatureException e) {
-            System.out.println("Firma inválida");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Token vacío");
+        } catch (JwtException e) {
+            return false;
         }
-        return false;
     }
 }
