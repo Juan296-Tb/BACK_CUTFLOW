@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,7 +21,7 @@ public class Cliente {
     private String telefono;
     private String correo;
 
-    private List<String> preferencias;
+    private TipoServicio preferencias;
     private String barberoPreferido;
 
     private String notas;

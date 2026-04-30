@@ -14,7 +14,7 @@ public class JwtService {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 1 día
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
                 .signWith(SignatureAlgorithm.HS256, SECRET)
                 .compact();
     }
@@ -31,8 +31,17 @@ public class JwtService {
         try {
             Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
             return true;
-        } catch (Exception e) {
-            return false;
+        } catch (ExpiredJwtException e) {
+            System.out.println("Token expirado");
+        } catch (UnsupportedJwtException e) {
+            System.out.println("Token no soportado");
+        } catch (MalformedJwtException e) {
+            System.out.println("Token mal formado");
+        } catch (SignatureException e) {
+            System.out.println("Firma inválida");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Token vacío");
         }
+        return false;
     }
 }

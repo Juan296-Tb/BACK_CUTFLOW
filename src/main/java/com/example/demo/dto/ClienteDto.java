@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import java.util.List;
+import com.example.demo.models.TipoServicio;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +16,7 @@ public class ClienteDto {
     private String nombre;
     private String telefono;
     private String correo;
-    private List<String> preferencias;
+    private TipoServicio preferencias;
     private String barberoPreferido;
     private String notas;
 

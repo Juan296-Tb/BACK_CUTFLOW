@@ -5,8 +5,6 @@ import org.springframework.stereotype.Component;
 import com.example.demo.dto.ClienteDto;
 import com.example.demo.models.Cliente;
 
-
-
 @Component
 public class ClienteMapperImpl implements ClienteMapper {
 
@@ -18,7 +16,10 @@ public class ClienteMapperImpl implements ClienteMapper {
         c.setNombre(dto.getNombre());
         c.setTelefono(dto.getTelefono());
         c.setCorreo(dto.getCorreo());
+
+        // 🔥 CORRECTO
         c.setPreferencias(dto.getPreferencias());
+
         c.setBarberoPreferido(dto.getBarberoPreferido());
         c.setNotas(dto.getNotas());
 
@@ -33,7 +34,10 @@ public class ClienteMapperImpl implements ClienteMapper {
         dto.setNombre(cliente.getNombre());
         dto.setTelefono(cliente.getTelefono());
         dto.setCorreo(cliente.getCorreo());
+
+        // 🔥 CORRECTO
         dto.setPreferencias(cliente.getPreferencias());
+
         dto.setBarberoPreferido(cliente.getBarberoPreferido());
         dto.setNotas(cliente.getNotas());
 
