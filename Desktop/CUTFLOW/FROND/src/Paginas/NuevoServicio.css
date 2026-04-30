@@ -1,0 +1,107 @@
+.nuevo-container {
+  min-height: 100vh;
+  background: #0d1117;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e2e8f0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.form-box {
+  background: #161b22;
+  padding: 40px;
+  width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.form-box h2 {
+  margin-bottom: 20px;
+  color: #d4af37;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: white;
+  border-radius: 6px;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+
+.categorias {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.categorias button {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+
+.categorias button:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+
+
+.categorias button.active {
+  background: #d4af37;
+  color: #0d1117;
+  font-weight: bold;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+.categorias button:active {
+  transform: scale(0.98);
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.cancelar {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.guardar {
+  background: #d4af37;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+}

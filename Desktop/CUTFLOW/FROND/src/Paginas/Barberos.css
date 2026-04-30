@@ -1,0 +1,42 @@
+/* BARBEROS CARD EXTRA */
+.barbero-card {
+  grid-template-columns: 1.5fr 2fr 2fr 1.5fr;
+  border-left: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.barbero-card:hover {
+  border-left: 3px solid #d4af37;
+  background: #211f1c;
+}
+
+/* INFO */
+.barbero-card .info h3 {
+  margin-bottom: 5px;
+}
+
+/* BOTONES */
+.action {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.action button {
+  background: none;
+  border: none;
+  color: #d4af37;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.action .danger {
+  color: #ff4d4d;
+}
+
+/* ESPECIALIDAD */
+.col span {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
